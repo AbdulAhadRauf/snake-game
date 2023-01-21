@@ -16,12 +16,19 @@ class Snake:
 
 
     def CreateSnake(self):
-        for i in range(len(START_COR)):
-            newinstace = Turtle(shape= "square")
-            newinstace.color("white")
-            newinstace.penup()
-            newinstace.goto(START_COR[i])
-            self.turtles.append(newinstace)
+        for eye in START_COR:
+           self.add_segment(eye)
+    
+    def add_segment(self,eye):
+        newttle = Turtle(shape= "square")
+        newttle.color("white")
+        newttle.penup()
+        newttle.goto(eye)
+        self.turtles.append(newttle)
+    
+
+    def extend_segment(self):
+        self.add_segment(self.turtles[-1].position())
 
     def MoveSnake(self):
         for i in range(len(self.turtles)-1, 0, -1):
